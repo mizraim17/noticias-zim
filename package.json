@@ -2,15 +2,23 @@
   "name": "api-noticias-mx",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mizraim17.github.io/noticias-zim/",
   "dependencies": {
+    "gh-pages": "^2.0.1",
+    "materialize-css": "^1.0.0",
+    "moment": "^2.24.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-materialize": "^2.6.0",
+    "react-moment": "^0.8.4",
     "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy":"yarn build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

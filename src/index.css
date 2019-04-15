@@ -12,3 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.txt-tit {
+  font-weight: bold;
+  color: #006dff;
+  background-color: rgba(235, 251, 248, 0.7);
+}
