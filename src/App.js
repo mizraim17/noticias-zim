@@ -86,7 +86,7 @@ class App extends Component {
     q:'tecnología',
     language: 'es',
     sortBy: 'publishedAt',
-    page: 1
+    page: 3
   })
   
   .then(response => {
