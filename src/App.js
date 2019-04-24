@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Col, Icon, Input, Row} from 'react-materialize'
+import {Button, Col,  Input, Row} from 'react-materialize'
 import './App.css';
 import News from "./Component/News";
 
