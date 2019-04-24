@@ -83,7 +83,7 @@ class App extends Component {
     let {newsToday} = this.state;
     
     newsapi.v2.everything({
-    q:'tecnología',
+    q:'cdmx',
     language: 'es',
     sortBy: 'publishedAt',
     page: 3
@@ -114,13 +114,18 @@ class App extends Component {
     return (
       <div>
         <Row>
-          <Col m={9}>
+          <Col m={9} blue>
             <Input
-              placeholder="Search News"
+              placeholder="Keywords"
               onChange={this.wordSearch}
               />
               <br/>
-            <Button onClick={this.findBySubject} icon="find_in_page"  >consumir</Button>
+            <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
+          </Col>
+          <Col m={3} pink>
+            <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
+            <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
+            <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
           </Col>
         </Row>
         <Row>
