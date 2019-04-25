@@ -39,7 +39,7 @@ class App extends Component {
       from: '2019-04-20',
       to: '2019-02-20',
       language: 'en',
-      sortBy: 'relevancy',
+      sortBy: 'relevanwordSearchcy',
       page: 2
     })
       .then(response => {
@@ -73,6 +73,24 @@ class App extends Component {
       });
   }
 
+  topicBybutton = (e) =>{
+    console.log('evento',e.target.value);
+    let word=e.target.value;
+
+    const NewsAPI = require('newsapi');
+    const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
+
+    let {news}= this.state;
+    newsapi.v2.everything({
+      q: word
+    })
+    .then(response => {
+      console.log(response);
+      news=response.articles;
+      this.setState({news})
+    });
+  }
+
   wordSearch= (e) => {
     this.setState({word:e.target.value})
   }
@@ -104,7 +122,9 @@ class App extends Component {
       console.log('today willmount',today)
     }
   }
- 
+
+
+
   componentDidMount() {
     this.newsDay()
   }
@@ -114,7 +134,7 @@ class App extends Component {
     return (
       <div>
         <Row>
-          <Col m={9} blue>
+          <Col m={6}  >
             <Input
               placeholder="Keywords"
               onChange={this.wordSearch}
@@ -122,10 +142,10 @@ class App extends Component {
               <br/>
             <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
           </Col>
-          <Col m={3} pink>
-            <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
-            <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
-            <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
+          <Col m={6}  >
+            <Button onClick={this.topicBybutton} icon="laptop_mac" value="Technology"  >Technology</Button>
+            <Button onClick={this.topicBybutton} icon="near_me" value="ciudad de mexico" >DF</Button>
+            <Button onClick={this.topicBybutton} icon="motorcycle" value="Motorcycle " >Motorcycle </Button>
           </Col>
         </Row>
         <Row>
@@ -136,6 +156,7 @@ class App extends Component {
                   <News
                     note={el}
                     key={i}
+
                   />
                 )
               })
@@ -152,6 +173,7 @@ class App extends Component {
                       <News
                         note={el}
                         key={i}
+                        no={i}
                       />
                     )
                   })
