@@ -3,7 +3,8 @@ import {Pagination,Row,Col} from 'react-materialize'
 
 const  Pages= (props) => {
   return(
-    <Row>{console.log('props--------',props)}
+    <Row>
+      {/*{console.log('props--------',props)}*/}
       <Col m={6} offset="m4">
         <Pagination
           activePage={1}

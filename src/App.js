@@ -81,7 +81,6 @@ class App extends Component {
   topicBybutton = (e) =>{
 
 
-
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
 
@@ -113,12 +112,11 @@ class App extends Component {
   newsDaily = ()=> {
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
-    let {news,pages} = this.state;
-    console.log('pages---------------->',pages)
+    let {news} = this.state;
+    // console.log('pages---------------->',pages)
 
     newsapi.v2.topHeadlines({
-      sources:'google-news',
-      sortBy: 'publishedAt',
+      sources:'google-news'
     })
   
     .then(response => {
@@ -130,14 +128,25 @@ class App extends Component {
         console.log(err)
       })
   }
-  
-  componentWillMount() {
-    let {today}=this.state;
-    today=Date()
-    if(today!==''){
-      this.setState({today})
-      console.log('today willmount',today)
-    }
+
+
+  probe = () => {
+    console.log('--------------------------')
+
+    const NewsAPI = require('newsapi');
+    const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
+
+    let {news}= this.state;
+    newsapi.v2.everything({
+      q: "apple",
+      page:2
+    })
+      .then(response => {
+
+        news=response.articles;
+        console.log('news --->',news )
+        this.setState({news})
+      });
   }
 
   changePages = (e) => {
@@ -146,29 +155,43 @@ class App extends Component {
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
 
     let {news,pages,word}= this.state;
-    console.log('pages====================',pages);
+    console.log('pages-before====================',pages);
 
-    this.setState({pages:e})
-
+    console.log('eeeeeeeeeeeeeee====================',e);
+    pages=e;
+    this.setState({pages})
+    console.log('pages-after====================',pages);
     newsapi.v2.everything({
       q: word,
       page:pages
     })
 
-    .then(response => {
-      news=response.articles;
-      this.setState({news})
-    })
+      .then(response => {
+        news=response.articles;
+        this.setState({news})
+      })
 
-    .catch((err)=>{
-      console.log(err)
-    })
+      .catch((err)=>{
+        console.log(err)
+      })
 
   }
+
+  componentWillMount() {
+    let {today}=this.state;
+    today=Date()
+    if(today!==''){
+      this.setState({today})
+      // console.log('today willmount',today)
+    }
+  }
+
+
 
 
   componentDidMount() {
     this.newsDaily()
+    // this.probe()
   }
   
   render() {
