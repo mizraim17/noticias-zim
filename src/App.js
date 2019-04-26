@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import {Button, Col,  Input, Row} from 'react-materialize'
 import './App.css';
 import News from "./Component/News";
+import Footerz from "./Component/Footerz";
+import Pages from "./Component/Pages";
 
 class App extends Component {
   state={
     word:"",
     news:[],
-    today:""
+    today:"",
+    pages:1
   }
   
   consumirAPi = () => {
@@ -62,57 +65,71 @@ class App extends Component {
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
 
-    let {word,news}= this.state;
+    let {word,news,pages}= this.state;
     newsapi.v2.everything({
-      q: word
+      q: word,
+      page:pages
     })
-      .then(response => {
-        console.log(response);
-        news=response.articles;
-        this.setState({news})
-      });
+    .then(response => {
+
+      news=response.articles;
+      this.setState({news})
+    });
+
   }
 
   topicBybutton = (e) =>{
-    console.log('evento',e.target.value);
-    let word=e.target.value;
+
+
 
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
 
-    let {news}= this.state;
-    newsapi.v2.everything({
-      q: word
-    })
-    .then(response => {
-      console.log(response);
-      news=response.articles;
-      this.setState({news})
-    });
+    let {news,pages}= this.state;
+    console.log('pages====================',pages);
+    let word=e.target.name;
+
+    if(word){
+      newsapi.v2.everything({
+        q: word,
+        page:pages
+      })
+
+        .then(response => {
+          news=response.articles;
+          this.setState({news})
+        });
+
+      this.setState({word})
+      console.log('word--->',word)
+    }
+
   }
 
   wordSearch= (e) => {
     this.setState({word:e.target.value})
   }
   
-  newsDay = ()=> {
+  newsDaily = ()=> {
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
-    let {newsToday} = this.state;
-    
-    newsapi.v2.everything({
-    q:'cdmx',
-    language: 'es',
-    sortBy: 'publishedAt',
-    page: 3
-  })
+    let {news,pages} = this.state;
+    console.log('pages---------------->',pages)
+
+    newsapi.v2.topHeadlines({
+      sources:'google-news',
+      sortBy: 'publishedAt',
+    })
   
-  .then(response => {
-    console.log('response-----',response);
-    newsToday=response.articles;
-    this.setState({newsToday})
-  });
-}
+    .then(response => {
+      news=response.articles;
+      this.setState({news})
+    })
+
+      .catch((err)=>{
+        console.log(err)
+      })
+  }
   
   componentWillMount() {
     let {today}=this.state;
@@ -123,14 +140,39 @@ class App extends Component {
     }
   }
 
+  changePages = (e) => {
+
+    const NewsAPI = require('newsapi');
+    const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
+
+    let {news,pages,word}= this.state;
+    console.log('pages====================',pages);
+
+    this.setState({pages:e})
+
+    newsapi.v2.everything({
+      q: word,
+      page:pages
+    })
+
+    .then(response => {
+      news=response.articles;
+      this.setState({news})
+    })
+
+    .catch((err)=>{
+      console.log(err)
+    })
+
+  }
 
 
   componentDidMount() {
-    this.newsDay()
+    this.newsDaily()
   }
   
   render() {
-    let {news,newsToday} = this.state;
+    let {news,newsToday,pages} = this.state;
     return (
       <div>
         <Row>
@@ -143,9 +185,9 @@ class App extends Component {
             <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
           </Col>
           <Col m={6}  >
-            <Button onClick={this.topicBybutton} icon="laptop_mac" value="Technology"  >Technology</Button>
-            <Button onClick={this.topicBybutton} icon="near_me" value="ciudad de mexico" >DF</Button>
-            <Button onClick={this.topicBybutton} icon="motorcycle" value="Motorcycle " >Motorcycle </Button>
+            <Button onClick={this.topicBybutton} icon="laptop_mac" name="technology"  >Tech</Button>
+            <Button onClick={this.topicBybutton} icon="near_me" name="cdmx" >DF</Button>
+            <Button onClick={this.topicBybutton} icon="motorcycle" name="motorcycle " >Byker </Button>
           </Col>
         </Row>
         <Row>
@@ -183,7 +225,12 @@ class App extends Component {
             :
             ''
         }
-       
+        <Pages
+          clic={this.changePages}
+          page={pages}
+        />
+      <Footerz
+      />
       </div>
     );
   }
