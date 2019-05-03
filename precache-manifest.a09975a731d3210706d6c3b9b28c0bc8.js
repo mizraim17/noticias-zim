@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/noticias-zim/static/css/main.ae74b4cd.chunk.css"
   },
   {
-    "revision": "d9144bed5e064f8f5d9ff74f994b2c2a",
+    "revision": "eaaa0362ec09ffb4b409545fccadebb1",
     "url": "/noticias-zim/index.html"
   }
 ];
