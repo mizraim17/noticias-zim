@@ -24,7 +24,7 @@ const Footerz = () => {
         </p>
       </Col>
       <Col m={4} className="white-text ">
-        <a href="https://newsapi.org/" className="grey-text text-lighten-4"> Power by <b> News API   </b> </a>
+        <a href="https://newsapi.org/" className="grey-text text-lighten-4"> Power by <b> NewsAPI.org   </b> </a>
       </Col>
     </Footer>
   )

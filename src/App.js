@@ -80,24 +80,30 @@ class App extends Component {
 
   topicBybutton = (e) =>{
 
-
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
 
     let {news,pages}= this.state;
-    console.log('pages====================',pages);
     let word=e.target.name;
+    console.log('word====================',word);
 
     if(word){
       newsapi.v2.everything({
         q: word,
+        pageSize:50,
         page:pages
+
       })
 
-        .then(response => {
-          news=response.articles;
-          this.setState({news})
-        });
+      .then(response => {
+        news=response.articles;
+        console.log('entro',news)
+        this.setState({news})
+      })
+
+      .catch((err)=>{
+        console.log(err)
+      })
 
       this.setState({word})
       console.log('word--->',word)
@@ -112,15 +118,18 @@ class App extends Component {
   newsDaily = ()=> {
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
-    let {news} = this.state;
+    let {news,pages} = this.state;
     // console.log('pages---------------->',pages)
 
     newsapi.v2.topHeadlines({
-      sources:'google-news'
+      country:'mx',
+      pageSize:50,
+      page:pages
     })
   
     .then(response => {
       news=response.articles;
+      console.log("noticias =>",news )
       this.setState({news})
     })
 
@@ -166,15 +175,14 @@ class App extends Component {
       page:pages
     })
 
-      .then(response => {
-        news=response.articles;
-        this.setState({news})
-      })
+    .then(response => {
+      news=response.articles;
+      this.setState({news})
+    })
 
-      .catch((err)=>{
-        console.log(err)
-      })
-
+    .catch((err)=>{
+      console.log(err)
+    })
   }
 
   componentWillMount() {
@@ -185,9 +193,6 @@ class App extends Component {
       // console.log('today willmount',today)
     }
   }
-
-
-
 
   componentDidMount() {
     this.newsDaily()
@@ -208,13 +213,14 @@ class App extends Component {
             <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
           </Col>
           <Col m={6}  >
+            <Button onClick={this.topicBybutton} icon="laptop_mac" name="mexico"  >México</Button>
             <Button onClick={this.topicBybutton} icon="laptop_mac" name="technology"  >Tech</Button>
             <Button onClick={this.topicBybutton} icon="near_me" name="cdmx" >DF</Button>
-            <Button onClick={this.topicBybutton} icon="motorcycle" name="motorcycle " >Byker </Button>
+            <Button onClick={this.topicBybutton} icon="motorcycle" name="javascript" >Byker </Button>
           </Col>
         </Row>
         <Row>
-          <Col m={9}>
+          <Col m={8} offset="m2"  >
             {
               news.map((el,i)=>{
                 return(
@@ -231,7 +237,7 @@ class App extends Component {
         {
           newsToday?
             <Row>
-              <Col m={9}>
+              <Col m={8} offset="m2">
                 {
                   newsToday.map((el,i)=>{
                     return(
@@ -245,8 +251,8 @@ class App extends Component {
                 }
               </Col>
             </Row>
-            :
-            ''
+          :
+          ''
         }
         <Pages
           clic={this.changePages}
