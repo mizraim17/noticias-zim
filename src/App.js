@@ -68,11 +68,12 @@ class App extends Component {
     let {word,news,pages}= this.state;
     newsapi.v2.everything({
       q: word,
-      page:pages
+      page:pages,
+      sortBy:'publishedAt'
     })
     .then(response => {
-
       news=response.articles;
+
       this.setState({news})
     });
 
@@ -91,13 +92,14 @@ class App extends Component {
       newsapi.v2.everything({
         q: word,
         pageSize:50,
-        page:pages
+        page:pages,
+        sortBy:'publishedAt'
 
       })
 
       .then(response => {
         news=response.articles;
-        console.log('entro',news)
+        console.log('button',news)
         this.setState({news})
       })
 
@@ -124,7 +126,8 @@ class App extends Component {
     newsapi.v2.topHeadlines({
       country:'mx',
       pageSize:50,
-      page:pages
+      page:pages,
+      sortBy: "publishedAt"
     })
   
     .then(response => {
@@ -216,7 +219,8 @@ class App extends Component {
             <Button onClick={this.topicBybutton} icon="laptop_mac" name="mexico"  >México</Button>
             <Button onClick={this.topicBybutton} icon="laptop_mac" name="technology"  >Tech</Button>
             <Button onClick={this.topicBybutton} icon="near_me" name="cdmx" >DF</Button>
-            <Button onClick={this.topicBybutton} icon="motorcycle" name="javascript" >Byker </Button>
+            <Button onClick={this.topicBybutton} icon="motorcycle" name="motorcycle" >Byker </Button>
+            <Button onClick={this.topicBybutton} icon="code" name="javascript" >JS </Button>
           </Col>
         </Row>
         <Row>
