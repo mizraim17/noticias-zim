@@ -1,13 +1,13 @@
 {
-  "main.css": "/noticias-zim/static/css/main.ae74b4cd.chunk.css",
-  "main.js": "/noticias-zim/static/js/main.7d28b5de.chunk.js",
-  "main.js.map": "/noticias-zim/static/js/main.7d28b5de.chunk.js.map",
+  "main.css": "/noticias-zim/static/css/main.2892006b.chunk.css",
+  "main.js": "/noticias-zim/static/js/main.0ff91fb0.chunk.js",
+  "main.js.map": "/noticias-zim/static/js/main.0ff91fb0.chunk.js.map",
   "runtime~main.js": "/noticias-zim/static/js/runtime~main.acbd03ea.js",
   "runtime~main.js.map": "/noticias-zim/static/js/runtime~main.acbd03ea.js.map",
   "static/js/2.c7d03567.chunk.js": "/noticias-zim/static/js/2.c7d03567.chunk.js",
   "static/js/2.c7d03567.chunk.js.map": "/noticias-zim/static/js/2.c7d03567.chunk.js.map",
   "index.html": "/noticias-zim/index.html",
-  "precache-manifest.6ec1e6a38bdbf6476a23883cb2570503.js": "/noticias-zim/precache-manifest.6ec1e6a38bdbf6476a23883cb2570503.js",
+  "precache-manifest.d690dc7f38809ac1b8db79901334e8fa.js": "/noticias-zim/precache-manifest.d690dc7f38809ac1b8db79901334e8fa.js",
   "service-worker.js": "/noticias-zim/service-worker.js",
-  "static/css/main.ae74b4cd.chunk.css.map": "/noticias-zim/static/css/main.ae74b4cd.chunk.css.map"
+  "static/css/main.2892006b.chunk.css.map": "/noticias-zim/static/css/main.2892006b.chunk.css.map"
 }
