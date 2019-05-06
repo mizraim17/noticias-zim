@@ -12,7 +12,26 @@ class App extends Component {
     today:"",
     pages:1
   }
-  
+
+  probe = () => {
+    console.log('--------------------------')
+
+    const NewsAPI = require('newsapi');
+    const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
+
+    let {news}= this.state;
+    newsapi.v2.everything({
+      q: "apple",
+      page:2
+    })
+      .then(response => {
+
+        news=response.articles;
+        console.log('news --->',news )
+        this.setState({news})
+      });
+  }
+
   consumirAPi = () => {
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
@@ -136,29 +155,9 @@ class App extends Component {
       this.setState({news})
     })
 
-      .catch((err)=>{
-        console.log(err)
-      })
-  }
-
-
-  probe = () => {
-    console.log('--------------------------')
-
-    const NewsAPI = require('newsapi');
-    const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
-
-    let {news}= this.state;
-    newsapi.v2.everything({
-      q: "apple",
-      page:2
+    .catch((err)=>{
+      console.log(err)
     })
-      .then(response => {
-
-        news=response.articles;
-        console.log('news --->',news )
-        this.setState({news})
-      });
   }
 
   changePages = (e) => {

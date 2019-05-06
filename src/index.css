@@ -1,4 +1,6 @@
-
+*{
+  color: white;
+}
 
 body {
   margin: 0;
@@ -21,8 +23,8 @@ code {
 
 .txt-tit {
   font-weight: bold;
-  color: #ff0b6c;
-  background-color: rgba(47, 50, 49, 0.7);
+  color: #ff0176;
+  background-color: rgba(245, 255, 253, 0.7);
 }
 
 .txt-news{
