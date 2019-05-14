@@ -205,7 +205,7 @@ class App extends Component {
     let {news,newsToday,pages} = this.state;
     return (
       <div>
-        <Row>
+        <Row className="container">
           <Col m={6}  >
             <Input
               placeholder="Keywords"
@@ -215,11 +215,12 @@ class App extends Component {
             <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
           </Col>
           <Col m={6}  >
-            <Button onClick={this.topicBybutton} icon="laptop_mac" name="mexico"  >México</Button>
+            <Button onClick={this.topicBybutton} icon="public" name="mexico"  >México</Button>
             <Button onClick={this.topicBybutton} icon="laptop_mac" name="technology"  >Tech</Button>
             <Button onClick={this.topicBybutton} icon="near_me" name="cdmx" >DF</Button>
             <Button onClick={this.topicBybutton} icon="motorcycle" name="motorcycle" >Byker </Button>
             <Button onClick={this.topicBybutton} icon="code" name="javascript" >JS </Button>
+            <Button onClick={this.topicBybutton} icon="person_pin" name="uaeh" >Pachuca </Button>
           </Col>
         </Row>
         <Row>
