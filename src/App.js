@@ -212,7 +212,7 @@ class App extends Component {
               onChange={this.wordSearch}
               />
               <br/>
-            <Button onClick={this.findBySubject} icon="find_in_page"  >Search</Button>
+            <Button onClick={this.findBySubject} icon="find_in_page"  > </Button>
           </Col>
           <Col m={6}  >
             <Button onClick={this.topicBybutton} icon="public" name="mexico"  >México</Button>
