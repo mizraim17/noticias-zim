@@ -218,9 +218,10 @@ class App extends Component {
             <Button onClick={this.topicBybutton} icon="public" name="mexico"  >México</Button>
             <Button onClick={this.topicBybutton} icon="laptop_mac" name="technology"  >Tech</Button>
             <Button onClick={this.topicBybutton} icon="near_me" name="cdmx" >DF</Button>
-            <Button onClick={this.topicBybutton} icon="motorcycle" name="motorcycle" >Byker </Button>
+            <Button onClick={this.topicBybutton} icon="motorcycle" name="moto" >Byker </Button>
             <Button onClick={this.topicBybutton} icon="code" name="javascript" >JS </Button>
-            <Button onClick={this.topicBybutton} icon="person_pin" name="uaeh" >Pachuca </Button>
+            <Button onClick={this.topicBybutton} icon="event_seat" name="uaeh" >UAEH </Button>
+            <Button onClick={this.topicBybutton} icon="remove_red_eye" name="pachuca" >pachuca </Button>
           </Col>
         </Row>
         <Row>

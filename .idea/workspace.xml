@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64a5f72a-6376-4d56-b09a-662b3c953f7c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="222" column="76" selection-start-line="222" selection-start-column="76" selection-end-line="222" selection-end-column="76" />
+            <state relative-caret-position="220">
+              <caret line="220" column="78" selection-start-line="220" selection-start-column="78" selection-end-line="220" selection-end-column="78" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -299,12 +298,12 @@
       <workItem from="1557358017876" duration="599000" />
       <workItem from="1557420856977" duration="599000" />
       <workItem from="1557460020917" duration="1393000" />
-      <workItem from="1557764333358" duration="5288000" />
+      <workItem from="1557764333358" duration="5787000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111088000" />
+    <option name="totallyTimeSpent" value="111587000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1425" y="0" width="1861" height="1080" extended-state="6" />
@@ -328,7 +327,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32977587" />
-      <window_info anchor="right" id="Terminal" order="4" weight="0.33358547" />
+      <window_info active="true" anchor="right" id="Terminal" order="4" visible="true" weight="0.33351678" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,8 +453,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="222" column="76" selection-start-line="222" selection-start-column="76" selection-end-line="222" selection-end-column="76" />
+        <state relative-caret-position="220">
+          <caret line="220" column="78" selection-start-line="220" selection-start-column="78" selection-end-line="220" selection-end-column="78" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
