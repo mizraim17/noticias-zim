@@ -143,7 +143,7 @@ class App extends Component {
     // console.log('pages---------------->',pages)
 
     newsapi.v2.topHeadlines({
-      country:'mx',
+      language:'es',
       pageSize:50,
       page:pages,
       sortBy: "publishedAt"
@@ -220,7 +220,7 @@ class App extends Component {
             <Button onClick={this.topicBybutton} icon="near_me" name="cdmx" >DF</Button>
             <Button onClick={this.topicBybutton} icon="motorcycle" name="moto" >Byker </Button>
             <Button onClick={this.topicBybutton} icon="code" name="javascript" >JS </Button>
-            <Button onClick={this.topicBybutton} icon="event_seat" name="uaeh" >UAEH </Button>
+            <Button onClick={this.topicBybutton} icon="school" name="uaeh" >UAEH </Button>
             <Button onClick={this.topicBybutton} icon="remove_red_eye" name="pachuca" >pachuca </Button>
           </Col>
         </Row>
