@@ -12,6 +12,7 @@
     "newsapi": "^2.4.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-loader-spinner": "^2.3.0",
     "react-materialize": "^2.6.0",
     "react-moment": "^0.8.4",
     "react-scripts": "2.1.8"

@@ -5,12 +5,15 @@ import News from "./Component/News";
 import Footerz from "./Component/Footerz";
 import Pages from "./Component/Pages";
 
+import Loader from 'react-loader-spinner'
+
 class App extends Component {
   state={
     word:"",
     news:[],
     today:"",
-    pages:1
+    pages:1,
+    Loading:false
   }
 
   probe = () => {
@@ -99,13 +102,14 @@ class App extends Component {
   }
 
   topicBybutton = (e) =>{
-
+    this.setState({Loading:true})
     const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('4891f314d6264426978f471d75136fd1');
 
     let {news,pages}= this.state;
     let word=e.target.name;
     console.log('word====================',word);
+    console.log('e.target.name',e.target.value);
 
     if(word){
       newsapi.v2.everything({
@@ -119,15 +123,20 @@ class App extends Component {
       .then(response => {
         news=response.articles;
         console.log('button',news)
-        this.setState({news})
+        this.setState({news,Loading:false})
       })
 
       .catch((err)=>{
         console.log(err)
+        this.setState({Loading:false})
       })
 
       this.setState({word})
       console.log('word--->',word)
+    }
+
+    else {
+      this.setState({Loading:false})
     }
 
   }
@@ -152,7 +161,7 @@ class App extends Component {
     .then(response => {
       news=response.articles;
       console.log("noticias =>",news )
-      this.setState({news})
+      this.setState({news,Loading:false})
     })
 
     .catch((err)=>{
@@ -191,7 +200,7 @@ class App extends Component {
     let {today}=this.state;
     today=Date()
     if(today!==''){
-      this.setState({today})
+      this.setState({today,Loading:true})
       // console.log('today willmount',today)
     }
   }
@@ -202,69 +211,87 @@ class App extends Component {
   }
   
   render() {
-    let {news,newsToday,pages} = this.state;
+    let {news,newsToday,pages,Loading} = this.state;
     return (
       <div>
-        <Row className="container">
-          <Col m={6}  >
-            <Input
-              placeholder="Keywords"
-              onChange={this.wordSearch}
-              />
-              <br/>
-            <Button onClick={this.findBySubject} icon="find_in_page"  > </Button>
-          </Col>
-          <Col m={6}  >
-            <Button onClick={this.topicBybutton} icon="public" name="mexico"  >México</Button>
-            <Button onClick={this.topicBybutton} icon="laptop_mac" name="technology"  >Tech</Button>
-            <Button onClick={this.topicBybutton} icon="near_me" name="cdmx" >DF</Button>
-            <Button onClick={this.topicBybutton} icon="motorcycle" name="moto" >Byker </Button>
-            <Button onClick={this.topicBybutton} icon="code" name="javascript" >JS </Button>
-            <Button onClick={this.topicBybutton} icon="school" name="uaeh" >UAEH </Button>
-            <Button onClick={this.topicBybutton} icon="remove_red_eye" name="pachuca" >pachuca </Button>
-          </Col>
-        </Row>
-        <Row>
-          <Col m={8} offset="m2"  >
-            {
-              news.map((el,i)=>{
-                return(
-                  <News
-                    note={el}
-                    key={i}
 
-                  />
-                )
-              })
-            }
-          </Col>
-        </Row>
         {
-          newsToday?
-            <Row>
-              <Col m={8} offset="m2">
-                {
-                  newsToday.map((el,i)=>{
-                    return(
-                      <News
-                        note={el}
-                        key={i}
-                        no={i}
-                      />
-                    )
-                  })
-                }
-              </Col>
-            </Row>
-          :
-          ''
-        }
-        <Pages
-          clic={this.changePages}
-          page={pages}
-        />
-      <Footerz
-      />
+          Loading ?
+            <div   className="Loader">
+              <Loader
+                type="TailSpin"
+                color="#00BFFF"
+                height="400"
+                width="400"
+              />
+            </div>
+
+            :
+
+           <>
+
+          <Row className="container">
+            <Col m={6}  >
+              <Input
+                placeholder="Keywords"
+                onChange={this.wordSearch}
+                />
+                <br/>
+              <Button onClick={this.findBySubject} icon="find_in_page"  > </Button>
+            </Col>
+            <Col m={6}  >
+              <Button onClick={this.topicBybutton} icon="public" name="mexico"  >México</Button>
+              <Button onClick={this.topicBybutton} icon="laptop_mac" name="technology"  >Tech</Button>
+              <Button onClick={this.topicBybutton} icon="near_me" name="cdmx" >DF</Button>
+              <Button onClick={this.topicBybutton} icon="motorcycle" name="moto" >Byker </Button>
+              <Button onClick={this.topicBybutton} icon="code" name="javascript" >JS </Button>
+              <Button onClick={this.topicBybutton} icon="school" name="uaeh" >UAEH </Button>
+              <Button onClick={this.topicBybutton} icon="remove_red_eye" name="pachuca" >pachuca </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col m={8} offset="m2"  >
+              {
+                news.map((el,i)=>{
+                  return(
+                    <News
+                      note={el}
+                      key={i}
+
+                    />
+                  )
+                })
+              }
+            </Col>
+          </Row>
+          {
+            newsToday?
+              <Row>
+                <Col m={8} offset="m2">
+                  {
+                    newsToday.map((el,i)=>{
+                      return(
+                        <News
+                          note={el}
+                          key={i}
+                          no={i}
+                        />
+                      )
+                    })
+                  }
+                </Col>
+              </Row>
+            :
+            ''
+          }
+          <Pages
+            clic={this.changePages}
+            page={pages}
+          />
+          <Footerz
+          />
+        </>
+       }
       </div>
     );
   }
