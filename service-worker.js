@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/noticias-zim/precache-manifest.5ffd469ba91049af1c2e3c35661f3afe.js"
+  "/noticias-zim/precache-manifest.d52d4a4a2564f0d1e1390e759e7a9948.js"
 );
 
 workbox.clientsClaim();
