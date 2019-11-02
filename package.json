@@ -8,7 +8,7 @@
     "materialize-css": "^1.0.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
-    "mongoose": "^5.5.2",
+    "mongoose": "^5.7.5",
     "newsapi": "^2.4.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
