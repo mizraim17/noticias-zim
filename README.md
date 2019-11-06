@@ -5,7 +5,7 @@ This application was created for read the most important News of world of easy w
 
 ##Probe 
 You can try at App in the following link
-https://mizraim17.github.io
+ https://mizraim17.github.io/noticias-zim/
 
 ---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
